@@ -21,7 +21,9 @@ public class GameSetupState : State
 
         Debug.Log("STATE: Game Setup");
         Debug.Log("Load Save Data");
-        Debug.Log("Spawn Units");
+        //Debug.Log("Spawn Units");
+
+        //_controller.UnitSpawner.Spawn(_controller.PlayerUnitPrefab, _controller.playerUnitSpawnLocation);
     }
 
     public override void Exit()
@@ -37,6 +39,6 @@ public class GameSetupState : State
     public override void Tick()
     {
         base.Tick();
-        //_stateMachine.ChangeState(_stateMachine.PutNewStateHere);
+        _stateMachine.ChangeState(_stateMachine.PlayState);
     }
 }
