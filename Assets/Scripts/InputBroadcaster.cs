@@ -21,6 +21,10 @@ public class InputBroadcaster : MonoBehaviour
     public bool _quitPressed;
 
     public bool SkillSelected { get; private set; } = false;
+    public bool AthCheck { get; private set; } = false;
+    public bool AgiCheck { get; private set; } = false;
+    public bool IntCheck { get; private set; } = false;
+    public bool ChaCheck { get; private set; } = false;
 
     private void Awake()
     {
@@ -52,21 +56,25 @@ public class InputBroadcaster : MonoBehaviour
     {
         //Debug.Log("Roll for Athletics");
         SkillSelected = true;
+        AthCheck = true;
     }
     public void AgilityCheck()
     {
         //Debug.Log("Roll for Agility");
         SkillSelected = true;
+        AgiCheck = true;
     }
     public void IntelligenceCheck()
     {
         //Debug.Log("Roll for Intelligence");
         SkillSelected = true;
+        IntCheck = true;
     }
     public void CharismaCheck()
     {
         //Debug.Log("Roll for Charisma");
         SkillSelected = true;
+        ChaCheck = true;
     }
     public void ResetScenario()
     {

@@ -9,6 +9,8 @@ public class GameWinState : State
     private GameFSM _stateMachine;
     private GameController _controller;
 
+    public ScenarioBlock _winScenario;
+
     public GameWinState(GameFSM stateMachine, GameController controller)
     {
         _stateMachine = stateMachine;
@@ -21,19 +23,40 @@ public class GameWinState : State
         Debug.Log("GAME STATE: Win State");
         Debug.Log("You succeed skill check.");
 
-        //disable scenario hud
-        _controller.ScenarioHUD.SetActive(false);
-        _controller.SkillCheckResult.SetActive(true);
+        //set scenario
+        _winScenario = _controller._currentScenario;
+
+        //Set Win state hud
+        _controller.ScenarioHUD.SetActive(false); //disable scenario hud
+        _controller.WinScreen.SetActive(true);
+        
         //set reset button to active
         _controller.ResetButton.SetActive(true);
-        //_controller.WinCanvas.SetActive();
+
+        //SET WIN TEXT
+        if (_controller.Input.AthCheck == true)
+        {
+            _controller.WinText.text = _winScenario._athWin;
+        }
+        else if (_controller.Input.AgiCheck == true)
+        {
+            _controller.WinText.text = _winScenario._agiWin;
+        }
+        else if (_controller.Input.IntCheck == true)
+        {
+            _controller.WinText.text = _winScenario._intWin;
+        }
+        else if (_controller.Input.ChaCheck == true)
+        {
+            _controller.WinText.text = _winScenario._chaWin;
+        }
     }
 
     public override void Exit()
     {
-        base.Exit();
+        _controller.WinScreen.SetActive(false); //set win screen UI to inactive
         _controller.ResetButton.SetActive(false);
-        
+        base.Exit();
     }
 
     public override void FixedTick()
@@ -47,7 +70,6 @@ public class GameWinState : State
         if (_controller.Input._resetPressed == true) //if reset button is pressed revert back to play state and reload the level
         {
             SceneManager.LoadScene(1);
-            _stateMachine.ChangeState(_stateMachine.PlayState);
         }
 
         /*
