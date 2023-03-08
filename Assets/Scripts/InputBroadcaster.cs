@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class InputBroadcaster : MonoBehaviour
 {
-    public bool IsTapPressed { get; private set; } = false;
+    //public bool IsTapPressed { get; private set; } = false;
     //TODO add other input events here
 
     public Button ATHButton;
@@ -36,11 +36,11 @@ public class InputBroadcaster : MonoBehaviour
         //NOTE: Put your Input/Detection here, this code does not account for new Input
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            IsTapPressed = true;
+            //IsTapPressed = true;
         }
         else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
-            IsTapPressed = false;
+            //IsTapPressed = false;
         }
 
         ATHButton.onClick.AddListener(AthleticsCheck);

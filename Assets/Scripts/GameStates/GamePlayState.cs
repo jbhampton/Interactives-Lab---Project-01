@@ -40,7 +40,7 @@ public class GamePlayState : State
         _controller.PossibleScenarios.Add(_controller.scenario1);
         _controller.PossibleScenarios.Add(_controller.scenario2);
         _controller.PossibleScenarios.Add(_controller.scenario3);
-        _controller.PossibleScenarios.Add(_controller.scenario4);
+        //_controller.PossibleScenarios.Add(_controller.scenario4);
         //Randomly pick a scenario from the list of possible scenarios
         _controller._currentScenario = _controller.PossibleScenarios[Random.Range(0, _controller.PossibleScenarios.Count)];
         Debug.Log(_controller._currentScenario.scenarioHeader);
